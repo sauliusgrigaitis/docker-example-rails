@@ -1,50 +1,135 @@
 source 'https://rubygems.org'
-ruby '2.1.5'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
-# Use PostgreSQL as the database for Active Record
-gem 'pg'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
-# Use jquery as the JavaScript library
+# -----------------------------------------------------------
+#
+#  App
+#
+# -----------------------------------------------------------
+gem 'rails', '~> 4.1.9'
+
+gem 'doorkeeper', '~> 1.4.0'
+gem 'oauth2'
+gem 'redis-activesupport'
+gem 'redis-scripting'
+gem 'pg', '0.18.1'
+
+# when this commit is merged into version then remove
+#gem 'typhoeus'
+gem 'typhoeus', :git => 'https://github.com/typhoeus/typhoeus', :ref => '007377777f75a0622873ffdb0a91e2a9403b01be'
+
+# API
+gem 'grape', '0.8'
+gem 'grape-entity', '~> 0.4.0'
+gem 'grape-swagger', '~> 0.10.2'
+gem 'validates-structure'
+gem 'domainatrix'
+
+gem 'concurrent-ruby', require: 'concurrent'
+
+# Assets
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'therubyracer'
+gem 'sass'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
 
-# Use 'dotenv-rails' to shim to load environment variables from .env into ENV in development.
-gem 'dotenv-rails', :groups => [:development, :test]
+#rack
+gem 'rack-cors', :require => 'rack/cors'
+gem 'rack-contrib', '~> 1.1.0'
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Puma as the app server
+# server
+# gem 'unicorn'
 gem 'puma'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'newrelic_rpm'
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+# service gems
+gem 'savon', :git => 'https://github.com/savonrb/savon.git', :branch => 'version3'
+#gem 'air_shop', :path => "vendor/gems/air_shop"
+# gem 'air_shop', path: '../air_shop'
 
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+#gem 'air_shop', :path => "vendor/gems/air_shop", :branch => 'celluloid-io-new'
+#gem 'air_shop', :path => "/Users/richardmoss/Desktop/ABB/air_shop"
 
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+
+gem 'countries'
+gem "money", '~> 6.6.1'
+#gem 'google_currency', '~> 3.2.0'
+#gem 'eu_central_bank'
+
+gem 'foreman'
+gem 'dotenv-rails'
+
+gem 'aasm'
+
+#used in some logging
+gem 'awesome_print'
+
+gem 'rollbar', '~> 2.3.0'
+
+gem 'sidekiq'
+gem 'sinatra', :require => nil
+gem 'sidetiq'
+gem 'sidekiq-failures'
+
+gem 'activemerchant', '~> 1.53'
+
+gem 'wicked_pdf', github: 'mileszs/wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem "rest-client"
+gem "bullet"
+gem 'annotate', '~> 2.6.6'
+
+#barcodes
+gem 'pdf417', '~> 0.2.0'
+gem 'chunky_png', '~> 1.3.5'
+gem 'rqrcode_png'
+
+group :development, :localdevelopment do
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem 'rubocop'
 end
 
-# Use rails_stgout_logging to configure your app to log to standard out
-gem 'rails_stdout_logging'
+group :test do
+  gem "parallel_tests"
+	gem 'shoulda-matchers', require: false
+	gem 'vcr'
+  gem 'webmock'
+  gem "json-schema"
+  gem "spring"
+  gem 'equivalent-xml', '~> 0.5.1'
+end
+
+group :development, :localdevelopment, :test do
+  gem 'jsonpath'
+  gem 'faker'
+  gem 'byebug'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  gem 'airborne'
+  gem 'powder'
+  gem 'guard-rspec', require: false
+  #gem "spring"
+  #gem "pry-remote"
+  gem 'nokogiri-diff'
+  gem 'gyoku', '~> 1.0'
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'timecop'
+end
+
+# -----------------------------------------------------------
+#
+#  Service Gems
+#
+# -----------------------------------------------------------
+
+#Air Admin
+gem 'activeadmin', '~> 1.0.0.pre1'
+gem 'devise'
+gem "pundit"
+gem 'country_select', github: 'stefanpenner/country_select'
