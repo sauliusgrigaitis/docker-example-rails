@@ -43,8 +43,6 @@ gem 'rack-contrib', '~> 1.1.0'
 # gem 'unicorn'
 gem 'puma'
 
-gem 'newrelic_rpm'
-
 # service gems
 gem 'savon', :git => 'https://github.com/savonrb/savon.git', :branch => 'version3'
 #gem 'air_shop', :path => "vendor/gems/air_shop"
